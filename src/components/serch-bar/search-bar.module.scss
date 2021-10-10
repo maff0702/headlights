@@ -1,0 +1,36 @@
+@import '../../fonts/fonts.scss';
+
+.search_container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.search{
+  width: 700px;;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 18px;
+  background: rgb(255, 255, 255);
+  input{
+    width: 660px;
+    height: 40px;
+    border-radius: 18px;
+    background: rgb(255, 255, 255);
+    color: #828282;
+    padding: 0 5px 0 15px;
+    font-size: 20px;
+    font-weight: 300;
+  }
+  span{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
+    svg{
+      fill: #929292;
+      cursor: pointer;
+    }
+  }
+}

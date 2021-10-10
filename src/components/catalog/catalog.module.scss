@@ -1,0 +1,38 @@
+@import '../../fonts/fonts.scss';
+
+/* Переменные */
+$primary-color: #2784e0;
+$gray-color: #f2f2f2;
+$border-color: rgb(233, 230, 230);
+
+.catalog_card{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.card{
+  width: 185px;
+  height: 250px;
+  background: rgb(255, 255, 255);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0 0 18.5px;
+}
+.card:nth-child(5n+1){
+  margin-left: 0;
+}
+.card_img{
+  width: 100%;
+  border-radius: 16px 16px 0 0;
+}
+.card_name{
+  width: 100%;
+  margin-top: 5px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+}
