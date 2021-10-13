@@ -17,9 +17,9 @@ const Header: FC = () => {
           <div className={styles.menu}>
             <ul>
               <li><NavLink exact to="/" activeClassName={styles.activeLink}>Главная</NavLink></li>
-              <li><NavLink to="/a" activeClassName={styles.activeLink}>Доставка/оплата</NavLink></li>
-              <li><NavLink to="/s" activeClassName={styles.activeLink}>Помощь</NavLink></li>
-              <li><NavLink to="/d" activeClassName={styles.activeLink}>Контакты</NavLink></li>
+              <li><NavLink to="/catalog" activeClassName={styles.activeLink}>Каталог</NavLink></li>
+              <li><NavLink to="/help" activeClassName={styles.activeLink}>Помощь</NavLink></li>
+              <li><NavLink to="/contacts" activeClassName={styles.activeLink}>Контакты</NavLink></li>
             </ul>
           </div>
         </div>
