@@ -1,0 +1,43 @@
+.content{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  h1{
+    width: 100%;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+  }
+}
+.main{
+  width: 100%;
+  display: flex;
+  div{
+    width: 50%;
+    margin-top: 20px;
+    // img{
+    //   width: 350px;
+    //   border: 1px solid #e4e2e2;
+    //   border-radius: 15px;
+    // }
+  }
+}
+
+.similar_product{
+  width: 100%;
+  display: flex;
+  div{
+    width: 100px;
+    border: 1px solid #e4e2e2;
+    border-radius: 10px;
+    margin-right: 10px;
+    img{
+      width: 100%;
+    }
+  }
+}
+
+.info{
+  width: 100%;
+  margin-top: 20px;
+}

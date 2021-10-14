@@ -13,7 +13,7 @@ const CatalogCards: FC = () => {
       ? categories.map((item) => (
         <div key={item.id} className={styles.card}>
           <Link className={styles.card} to={`/catalog/${item.id}`}>
-            <img className={styles.card_img} src={item.img} alt={item.name} />
+            <img className={styles.card_img} src={process.env.PUBLIC_URL + item.img} alt={item.name} />
             <p className={styles.card_name}>{item.name}</p>
           </Link>
         </div>
