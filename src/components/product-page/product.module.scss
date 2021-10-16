@@ -1,3 +1,5 @@
+@import '../../fonts/fonts.scss';
+
 .content{
   width: 100%;
   display: flex;
@@ -8,31 +10,85 @@
     font-weight: 500;
     line-height: 24px;
   }
+  p{
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+  }
+  p span{
+    font-size: 16px;
+    font-weight: 400;
+  }
+  pre{
+    font-family: 'RobotoSlab';
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 400;
+  }
 }
 .main{
   width: 100%;
   display: flex;
-  div{
-    width: 50%;
-    margin-top: 20px;
-    // img{
-    //   width: 350px;
-    //   border: 1px solid #e4e2e2;
-    //   border-radius: 15px;
-    // }
+}
+.left_container, .right_container{
+  width: 50%;
+  margin-top: 20px;
+}
+.left_container{
+  display: flex;
+}
+.other_images{
+  width: 100px;
+  height: 100%;
+}
+.other_image{
+  width: 100%;
+  margin-top: 10px;
+  background: rgb(255, 255, 255);
+  cursor: pointer;
+  img{
+    width: 100%;
   }
 }
-
+.other_images :first-child{
+  margin-top: 0;
+}
+.main_image{
+  width: 350px;
+  height: 320px;
+  background-color: rgb(255, 255, 255);
+  padding: 5px;
+  margin-left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img{
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+  }
+}
+.similar_container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
 .similar_product{
   width: 100%;
   display: flex;
+  margin-top: 10px;
   div{
     width: 100px;
+    height: 100px;
     border: 1px solid #e4e2e2;
     border-radius: 10px;
     margin-right: 10px;
     img{
-      width: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      background-color: rgb(255, 255, 255);
+      border-radius: 10px;
     }
   }
 }
