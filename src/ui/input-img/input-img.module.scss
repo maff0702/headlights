@@ -1,0 +1,54 @@
+@import '../../fonts/fonts.scss';
+
+.dropzone_container{
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #828282;
+  border-radius: 10px;
+  margin: 10px 10px;
+  padding: 10px;
+}
+.dropzone{
+  width: 100%;
+  min-height: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px dotted #828282;
+  border-radius: 10px;
+  cursor: pointer;
+  background: rgb(255, 255, 255);
+}
+.thumbs_container{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 5px;
+  border-radius: 10px;
+};
+.thumb{
+  display: inline-flex;
+  border-radius: 2;
+  border: 1px solid #d1d1d1;
+  margin: 5px 0;
+  width: 33%;
+  max-height: 100%;
+  padding: 4px;
+  box-sizing: border-box;
+}
+.thumbInner{
+  display: flex;
+  overflow: hidden;
+  min-width: 0;
+}
+.img{
+  display: block;
+  width: auto;
+  max-height: 100px
+};

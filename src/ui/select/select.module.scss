@@ -1,0 +1,14 @@
+
+.select{
+  width: calc(100% - 20px);
+  margin: 10px;
+  border: 1px solid #828282;
+  border-radius: 10px;
+  padding: 5px 10px;
+  font-size: 16px;
+  option{
+    width: 100px;
+    min-height: 50px;
+    word-break: break-all;
+  }
+}

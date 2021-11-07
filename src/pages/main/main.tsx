@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 
 import styles from './main.module.scss';
-import SerchBar from '../serch-bar/search-bar';
-import CatalogCards from '../catalog-cards/catalog-cards';
+import SerchBar from '../../ui/serch-bar/search-bar';
+import CatalogCards from '../../components/catalog-cards/catalog-cards';
 import likeImg from '../../images/like.svg';
 import dollarImg from '../../images/dollar.svg';
 import readyImg from '../../images/ready.svg';

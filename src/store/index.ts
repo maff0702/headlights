@@ -1,11 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit';
 import productsSlice from './productsSlice';
+import authSlice from './authSlice';
 
 const store = configureStore({
   reducer: {
-    products: productsSlice
+    products: productsSlice,
+    auth: authSlice
   }
 });
+// store.subscribe(() => {
+//   localStorage.setItem('token', store.getState().auth.token ? store.getState().auth.token : '');
+// });
 
 export default store;
 
