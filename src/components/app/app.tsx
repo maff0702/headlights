@@ -23,7 +23,7 @@ const App: FC = () => {
   const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    dispatch(requestCheckAuth());
+    if (localStorage.getItem('token')) dispatch(requestCheckAuth());
     dispatch(getCategories());
   }, [dispatch]);
 

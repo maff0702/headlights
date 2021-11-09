@@ -1,15 +1,16 @@
-import React, { FC, useState, MouseEvent, ChangeEvent } from 'react';
-import { useDispatch } from '../../hooks/hooks';
+import React, { FC, useState, useEffect, MouseEvent, ChangeEvent } from 'react';
+import { useSelector, useDispatch } from '../../hooks/hooks';
 import { useDropzone } from 'react-dropzone';
 
 import styles from './create-category.module.scss';
 import Input from '../../ui/input/input';
 import InputImg from '../../ui/input-img/input-img';
 import Button from '../../ui/button/button';
-import { createCategories } from '../../store/productsSlice';
+import { createCategory, setError } from '../../store/productsSlice';
 
 const CreateCategory: FC = () => {
   const dispatch = useDispatch();
+  const { message } = useSelector((state) => state.products);
   const [stateCategory, setStateCategory] = useState({
     name: ''
   });
@@ -36,8 +37,12 @@ const CreateCategory: FC = () => {
     const formData = new FormData();
     formData.append('name', stateCategory.name);
     formData.append('img', files[0]);
-    dispatch(createCategories(formData));
+    dispatch(createCategory(formData));
   };
+  useEffect(() => {
+    dispatch(setError());
+    return () => { dispatch(setError()); };
+  }, [dispatch]);
   return (
     <div className={styles.form}>
       <h3>Добавить категорию</h3>
@@ -48,7 +53,8 @@ const CreateCategory: FC = () => {
           getRootProps={getRootProps}
           getInputProps={getInputProps}
         ><p>Перетащите сюда или нажмите, чтобы выбрать изображение для категории</p></InputImg>
-        <Button >Добавить категорию</Button>
+        <p className={styles.form_info}>{message}</p>
+        <div className={styles.wrapped_button}><Button >Добавить категорию</Button></div>
       </form>
     </div>
   );

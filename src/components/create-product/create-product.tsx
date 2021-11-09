@@ -1,19 +1,33 @@
 import React, { FC, useState, MouseEvent, ChangeEvent } from 'react';
 import { useSelector, useDispatch } from '../../hooks/hooks';
-import { useDropzone } from 'react-dropzone';
 
 import styles from './create-product.module.scss';
 import Input from '../../ui/input/input';
 import Button from '../../ui/button/button';
-import InputImg from '../../ui/input-img/input-img';
 import DropzoneImg from '../../ui/input-img/dropzone-img';
 import Select from '../../ui/select/select';
 import Textarea from '../../ui/textarea/textarea';
 import { createProduct } from '../../store/productsSlice';
 
+const infoTitle = [
+  { title: 'Мощность светильника', description: '', number: 1 },
+  { title: 'Световой поток', description: '', number: 2 },
+  { title: 'Температура свечения, К', description: '', number: 3 },
+  { title: 'Габаритный размер, мм', description: '', number: 4 },
+  { title: 'Коэффициент пульсации, %', description: '', number: 5 },
+  { title: 'Коэффициент мощности', description: '', number: 6 },
+  { title: 'Тик КСС', description: '', number: 7 },
+  { title: 'Индекс цветопередачи, Ra', description: '', number: 8 },
+  { title: 'Масса изделия, кг', description: '', number: 9 },
+  { title: 'Диапазон рабочих температур, C', description: '', number: 10 },
+  { title: 'Гарантийный срок, г', description: '', number: 11 },
+  { title: 'Функция диммирования', description: '', number: 12 },
+  { title: 'Степень защиты от влаги и пыли, IP', description: '', number: 13 }
+];
+
 const CreateProduct: FC = () => {
   const dispatch = useDispatch();
-  const { categories } = useSelector((state) => state.products);
+  const { categories, message } = useSelector((state) => state.products);
   const [stateProduct, setStateProduct] = useState({
     name: '',
     price: '' as any,
@@ -21,21 +35,7 @@ const CreateProduct: FC = () => {
     group: '',
     description: ''
   });
-  const [info, setInfo] = useState<any>([
-    { title: 'Мощность светильника:', description: '', number: 1 },
-    { title: 'Световой поток:', description: '', number: 2 },
-    { title: 'Температура свечения, К:', description: '', number: 3 },
-    { title: 'Габаритный размер, мм:', description: '', number: 4 },
-    { title: 'Коэффициент пульсации, %:', description: '', number: 5 },
-    { title: 'Коэффициент мощности:', description: '', number: 6 },
-    { title: 'Тик КСС:', description: '', number: 7 },
-    { title: 'Индекс цветопередачи, Ra:', description: '', number: 8 },
-    { title: 'Масса изделия, кг:', description: '', number: 9 },
-    { title: 'Диапазон рабочих температур, C:', description: '', number: 10 },
-    { title: 'Гарантийный срок, г:', description: '', number: 11 },
-    { title: 'Функция диммирования:', description: '', number: 12 },
-    { title: 'Степень защиты от влаги и пыли, IP:', description: '', number: 13 }
-  ]);
+  const [info, setInfo] = useState<any>([...infoTitle]);
   const [files, setFiles] = useState([]);
   const [mainImg, setMainImg] = useState<any>([]);
   const [categoryId, setCategoryId] = useState('');
@@ -52,6 +52,13 @@ const CreateProduct: FC = () => {
   const handleChangeSelect = (event: ChangeEvent< HTMLSelectElement>): void => {
     setCategoryId(event.target.value);
   };
+  const clearForm = () => {
+    setStateProduct({ name: '', price: '' as any, vcode: '', group: '', description: '' });
+    setMainImg([]);
+    setFiles([]);
+    setCategoryId('');
+    setInfo([...infoTitle]);
+  };
 
   const onChange = (event: ChangeEvent<HTMLInputElement>): void => {
     const { value, name } = event.target;
@@ -60,13 +67,6 @@ const CreateProduct: FC = () => {
       [name]: value
     });
   };
-  const onDrop = (acceptedFiles: any) => {
-    // console.log(acceptedFiles);
-    setFiles(acceptedFiles.map((file:any) => Object.assign(file, {
-      preview: URL.createObjectURL(file)
-    })));
-  };
-  const { getRootProps, getInputProps } = useDropzone({ accept: 'image/*', onDrop });
 
   const dataInput = [
     { type: 'text', value: stateProduct.name, onChange: onChange, placeholder: 'Наименование', name: 'name' },
@@ -100,14 +100,14 @@ const CreateProduct: FC = () => {
         <Textarea name='description' value={stateProduct.description} onChange={onChange}>Описание товара</Textarea>
         <DropzoneImg
           files={mainImg}
-          setFile={setMainImg}
+          setFiles={setMainImg}
           multiple={false}
         ><p>Перетащите сюда или нажмите, чтобы выбрать основное изображение</p></DropzoneImg>
-        <InputImg
+        <DropzoneImg
           files={files}
-          getRootProps={getRootProps}
-          getInputProps={getInputProps}
-        ><p>Перетащите сюда или нажмите, чтобы выбрать изображения дополнительные изображения</p></InputImg>
+          setFiles={setFiles}
+          multiple={true}
+        ><p>Перетащите сюда или нажмите, чтобы выбрать дополнительные изображения</p></DropzoneImg>
         <Button
             onClick={addInfo}
         >
@@ -136,7 +136,11 @@ const CreateProduct: FC = () => {
             </div>
           )}
         </div>
-        <Button onClick={onSubmit}>Добавить товар</Button>
+        <p className={styles.form_info}>{message}</p>
+        <div className={styles.button_container}>
+          <Button onClick={clearForm}>Очистить форму</Button>
+          <Button onClick={onSubmit}>Добавить товар</Button>
+        </div>
       {/* </form> */}
     </div>
   );

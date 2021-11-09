@@ -11,8 +11,10 @@ const ProductCard: FC<any> = ({ data }) => {
   return (
     <div className={styles.card}>
       <Link className={styles.card} to={`/catalog/${name.toLowerCase()}/${data.name.toLowerCase()}`}>
-        <img className={styles.card_img} src={`${API_URL_IMG}/${data?.img[0]?.name}`} alt={data?.name} />
-        <p className={styles.card_name}>{data.name} {data.color && data.color}</p>
+        <img className={styles.card_img} src={`${API_URL_IMG}/${data?.mainImg}`} alt={data?.name} />
+        <p className={styles.card_name}>{data?.name.length > 25
+            ? data.name.substr(0, 25) + ' ...'
+            : data.name}</p>
       </Link>
     </div>
   );

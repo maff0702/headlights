@@ -11,7 +11,7 @@ export default class ProductService {
     return axiosAPI.post<any>('/product', formData);
   }
 
-  static async productGetAll ({ categoryId, name, search, group, limit, page }:any): Promise<AxiosResponse<any>> {
+  static async productGetAll ({ categoryId, search, group, limit, page }:any): Promise<AxiosResponse<any>> {
     limit = limit || 15;
     page = page || 1;
     return axiosAPI.get<any>(`/product?categoryId=${categoryId}&search=${search}&group=${group}&limit=${limit}&page=${page}`);
@@ -29,15 +29,16 @@ export default class ProductService {
     return axiosAPI.delete(`/product/${id}`);
   }
 
-  static async imgCreate (productId: any): Promise<AxiosResponse<ILoginUser>> {
-    return axiosAPI.post<any>('/product/img', { productId });
+  static async imgCreate (formData: any): Promise<AxiosResponse<ILoginUser>> {
+    return axiosAPI.post<any>('/product/img', formData);
   }
 
-  static async imgDelete (id: string): Promise<AxiosResponse<ILoginUser>> {
+  static async imgDelete (id: number): Promise<AxiosResponse<ILoginUser>> {
     return axiosAPI.delete(`/product/img/${id}`);
   }
 
   static async infoCreate ({ productId, title, description }: any): Promise<AxiosResponse<any>> {
+    console.log();
     return axiosAPI.post<any>('/product/info', { productId, title, description });
   }
 

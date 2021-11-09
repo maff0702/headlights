@@ -41,7 +41,7 @@ const SerchBar: FC = () => {
           {info.map((item) => (
             <Link key={item.id} onFocus={() => setFocus(true)} className={styles.card} to={`/catalog/${search?.toLowerCase()}/${item.name.toLowerCase()}`}>
             <div className={styles.search_card}>
-              <img src={`${API_URL_IMG}/${item.img[0].name}`} height='50px' width='50px' />
+              <img src={`${API_URL_IMG}/${item?.mainImg}`} height='50px' width='50px' />
               <p>{item.name}</p>
             </div>
             </Link>

@@ -5,22 +5,30 @@ export interface ICategory {
   id: number;
   name: string;
   img: string[];
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface IProductImg {
   id: number;
   name: string;
-  productId: string;
+  productId: number;
+}
+export interface IProductInfo {
+  id: number;
+  featureTitle: string;
+  featureDescription: string;
+  categoryId: number;
 }
 export interface IProduct {
-  id: number;
-  name: string;
-  mainImg: string;
+  readonly id: number;
+  readonly name: string;
+  readonly mainImg: string;
   price: number;
   description: string;
   vcode: string;
   group: string;
-  categoryId: number;
-  info: [];
+  readonly categoryId: number;
+  info: IProductInfo[];
   img: IProductImg[];
 }

@@ -3,10 +3,15 @@ import Dropzone from 'react-dropzone';
 
 import styles from './input-img.module.scss';
 
-const DropzoneImg: FC<any> = ({ setFile, files, multiple, children }) => {
+const DropzoneImg: FC<any> = ({ setFiles, files, multiple, children }) => {
+  const closeImg = (name:string) => {
+    const newFiles = files.filter((item:any) => item.name !== name);
+    setFiles(newFiles);
+  };
   const thumbs = files?.map((file:any) => (
     <div className={styles.thumb} key={file.name}>
       <div className={styles.thumbInner}>
+        <span onClick={() => closeImg(file.name)} className={styles.close} />
         <img
           src={file.preview}
           className={styles.img}
@@ -19,7 +24,7 @@ const DropzoneImg: FC<any> = ({ setFile, files, multiple, children }) => {
   }, [files]);
   return (
     <Dropzone onDrop={(acceptedFiles) => {
-      setFile(acceptedFiles.map((file:any) => Object.assign(file, {
+      setFiles(acceptedFiles.map((file:any) => Object.assign(file, {
         preview: URL.createObjectURL(file)
       })));
       }} multiple={multiple}>

@@ -13,3 +13,11 @@
     text-align: center;
   }
 }
+.wrapped_button{
+  width: 100%;
+  display: flex;
+}
+.form_info{
+  width: calc(100%-15px);
+  margin: 10px 15px;
+}

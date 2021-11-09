@@ -15,7 +15,6 @@ const Login: FC = () => {
     login: '',
     password: ''
   });
-  console.log(message);
   const onChange = (event: ChangeEvent<HTMLInputElement>): void => {
     const { value, name } = event.target;
     setState({
@@ -37,8 +36,9 @@ const Login: FC = () => {
   return (
     <div className={styles.auth}>
       <h1>Авторизация</h1>
-      <form onClick={onSubmit}>
+      <form onSubmit={onSubmit}>
         {dataInput.map((item) => (<Input key={item.name} {...item} />))}
+        <p className={styles.auth_info_form}>{message}</p>
         <Button>Войти</Button>
       </form>
     </div>

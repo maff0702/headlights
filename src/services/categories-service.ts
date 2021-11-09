@@ -15,11 +15,11 @@ export default class CategoryService {
     return axiosAPI.get<any>('/categories');
   }
 
-  static async categoriesUpdate (formData: any): Promise<AxiosResponse<any>> {
-    return axiosAPI.patch<any>('/categories', formData);
+  static async categoriesUpdate (id: number, formData: any): Promise<AxiosResponse<any>> {
+    return axiosAPI.patch<any>(`/categories/${id}`, formData);
   }
 
-  static async categoriesDelete (id: string): Promise<AxiosResponse<any>> {
+  static async categoriesDelete (id: number): Promise<AxiosResponse<any>> {
     return axiosAPI.delete(`/categories/${id}`);
   }
 }

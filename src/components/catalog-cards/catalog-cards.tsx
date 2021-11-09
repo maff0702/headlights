@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from '../../hooks/hooks';
 
@@ -7,10 +7,20 @@ import { setError } from '../../store/productsSlice';
 import { ICategory } from '../../types/main';
 import { API_URL_IMG } from '../../utils/constants';
 import Spinner from '../../ui/spinner/spinner';
+import Modal from '../modal/modal';
+import EditCategory from '../edit-category/edit-category';
+import Button from '../../ui/button/button';
 
 const CatalogCards: FC = () => {
   const dispatch = useDispatch();
   const { categories, isLoading, isError } = useSelector((store) => store.products);
+  const role = useSelector((store) => store.auth.user?.role);
+  const [isModal, semModal] = useState(false);
+  const [currentCategory, setCurrentCategory] = useState<ICategory>({
+    id: 0,
+    name: '',
+    img: []
+  });
   const categoriesSort = Array.isArray(categories)
   ? [...categories].sort(function (a, b) {
     if (a.id > b.id) {
@@ -23,8 +33,9 @@ const CatalogCards: FC = () => {
   })
   : null;
   useEffect(() => {
+    dispatch(setError());
     return () => { dispatch(setError()); };
-  }, [dispatch]);
+  }, [dispatch, categories]);
 
   return (
     <div className={styles.catalog_cards}>
@@ -39,9 +50,21 @@ const CatalogCards: FC = () => {
             ? item.name.substr(0, 25) + ' ...'
             : item.name}</p>
           </Link>
+          {role && role === 'ADMIN' && <Button
+            onClick={() => {
+              semModal(true);
+              setCurrentCategory(item);
+              }}>Редактировать</Button>}
         </div>
       ))
-      : !isError && <p>Не удалось найти товар</p>}
+      : !isError && <p>Не удалось найти категории</p>}
+      <Modal
+        active={isModal}
+        setActive={semModal}
+        title="Редактирование категории"
+      >
+        <EditCategory category={currentCategory} setActive={semModal} />
+      </Modal>
     </div>
   );
 };
