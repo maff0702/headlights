@@ -23,9 +23,9 @@ const Admin: FC = () => {
       {/* <h1>Панель администратора</h1> */}
       <div className={styles.tab_containter}>
         <a onClick={() => setCurrentTab('addProduct')} className={currentTab === 'addProduct' ? styles.tab_active : styles.tab}>
-          Описание</a>
+          Добавить товар</a>
         <a onClick={() => setCurrentTab('addCategory')} className={currentTab === 'addCategory' ? styles.tab_active : styles.tab}>
-          Характеристики</a>
+          Добавить категорию</a>
           <a onClick={() => setCurrentTab('settings')} className={currentTab === 'settings' ? styles.tab_active : styles.tab}>
           Настройки</a>
       </div>
