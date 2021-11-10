@@ -95,24 +95,26 @@ const CreateProduct: FC = () => {
     <div className={styles.form}>
       <h3>Добавить товар</h3>
       {/* <form onSubmit={onSubmit}> */}
-        {dataInput.map((item, i) => (<Input key={i} {...item} />))}
-        <Select arr={categories} onChange={handleChangeSelect}>Выберите категорию товара</Select>
-        <Textarea name='description' value={stateProduct.description} onChange={onChange}>Описание товара</Textarea>
-        <DropzoneImg
-          files={mainImg}
-          setFiles={setMainImg}
-          multiple={false}
-        ><p>Перетащите сюда или нажмите, чтобы выбрать основное изображение</p></DropzoneImg>
-        <DropzoneImg
-          files={files}
-          setFiles={setFiles}
-          multiple={true}
-        ><p>Перетащите сюда или нажмите, чтобы выбрать дополнительные изображения</p></DropzoneImg>
-        <Button
-            onClick={addInfo}
-        >
-            Добавить новую характеристику
-        </Button>
+        {dataInput.map((item, i) => (<div className={styles.wrapper_control} key={i}><Input {...item} /></div>))}
+        <div className={styles.wrapper_control}><Select arr={categories} onChange={handleChangeSelect}>Выберите категорию товара</Select></div>
+        <div className={styles.wrapper_control}>
+          <Textarea name='description' value={stateProduct.description} onChange={onChange}>Описание товара</Textarea>
+        </div>
+        <div className={styles.wrapper_control}>
+          <DropzoneImg
+            files={mainImg}
+            setFiles={setMainImg}
+            multiple={false}
+          ><p>Перетащите сюда или нажмите, чтобы выбрать основное изображение</p></DropzoneImg>
+        </div>
+        <div className={styles.wrapper_control}>
+          <DropzoneImg
+            files={files}
+            setFiles={setFiles}
+            multiple={true}
+          ><p>Перетащите сюда или нажмите, чтобы выбрать дополнительные изображения</p></DropzoneImg>
+        </div>
+        <div className={styles.wrapper_control}><Button onClick={addInfo}>Добавить новую характеристику</Button></div>
         <div className={styles.info_block}>
           {info.map((i:any) =>
             <div key={i.number} className={styles.info_control}>

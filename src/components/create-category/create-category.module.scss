@@ -13,9 +13,13 @@
     text-align: center;
   }
 }
-.wrapped_button{
-  width: 100%;
+
+.wrapper_control{
+  width: calc(100%-20px);
   display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
 }
 .form_info{
   width: calc(100%-15px);

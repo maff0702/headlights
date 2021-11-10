@@ -38,34 +38,38 @@ const CatalogCards: FC = () => {
   }, [dispatch, categories]);
 
   return (
-    <div className={styles.catalog_cards}>
-      {isLoading && <Spinner /> }
-      {isError && <p>Ошибка, попробуйте обновить страницу...</p>}
-      {categoriesSort && categoriesSort?.length > 0
-      ? categoriesSort.map((item: ICategory) => (
-        <div key={item.id} className={styles.card}>
-          <Link className={styles.card} to={{ pathname: `/catalog/${item.name.toLowerCase()}`, state: { id: item.id } }}>
-            <img className={styles.card_img} src={`${API_URL_IMG}/${item.img}`} alt={item.name} />
-            <p className={styles.card_name}>{item.name.length > 25
-            ? item.name.substr(0, 25) + ' ...'
-            : item.name}</p>
-          </Link>
-          {role && role === 'ADMIN' && <Button
-            onClick={() => {
-              semModal(true);
-              setCurrentCategory(item);
-              }}>Редактировать</Button>}
-        </div>
-      ))
-      : !isError && <p>Не удалось найти категории</p>}
-      <Modal
-        active={isModal}
-        setActive={semModal}
-        title="Редактирование категории"
-      >
-        <EditCategory category={currentCategory} setActive={semModal} />
-      </Modal>
-    </div>
+    <>
+      <div className={styles.info_block}>
+        {isLoading && <Spinner /> }
+        {isError && <p>Ошибка, попробуйте обновить страницу...</p>}
+      </div>
+      <div className={styles.catalog_cards}>
+        {categoriesSort && categoriesSort?.length > 0
+        ? categoriesSort.map((item: ICategory) => (
+          <div key={item.id} className={styles.card}>
+            <Link className={styles.card} to={{ pathname: `/catalog/${item.name.toLowerCase()}`, state: { id: item.id } }}>
+              <img className={styles.card_img} src={`${API_URL_IMG}/${item.img}`} alt={item.name} />
+              <p className={styles.card_name}>{item.name.length > 25
+              ? item.name.substr(0, 25) + ' ...'
+              : item.name}</p>
+            </Link>
+            {role && role === 'ADMIN' && <Button
+              onClick={() => {
+                semModal(true);
+                setCurrentCategory(item);
+                }}>Редактировать</Button>}
+          </div>
+        ))
+        : !isError && <p>Не удалось найти категории</p>}
+        <Modal
+          active={isModal}
+          setActive={semModal}
+          title="Редактирование категории"
+        >
+          <EditCategory category={currentCategory} setActive={semModal} />
+        </Modal>
+      </div>
+    </>
   );
 };
 

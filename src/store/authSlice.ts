@@ -14,6 +14,18 @@ export const requestLogin = createAsyncThunk(
     }
   }
 );
+export const requestRegister = createAsyncThunk(
+  'auth/requestLogin ',
+  async (state: {login:string; password: string}, { rejectWithValue }) => {
+    try {
+      const response = await api.register(state);
+      localStorage.setItem('token', response.data?.token?.split(' ')[1]);
+      return response.data;
+    } catch (e:any) {
+      return rejectWithValue(e.response.data);
+    }
+  }
+);
 export const requestCheckAuth = createAsyncThunk(
   'auth/checkAuth',
   async (_, { rejectWithValue }) => {
@@ -50,6 +62,11 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
+    logout: (state) => {
+      state.user = null;
+      state.token = '';
+      state.isAuth = false;
+    },
     setError: (state) => {
       state.isError = false;
       state.message = '';
@@ -63,6 +80,16 @@ const authSlice = createSlice({
       state.isError = false;
     },
     [requestLogin.rejected.toString()]: (state, action:PayloadAction<any>) => {
+      state.isError = true;
+      state.message = action.payload?.message;
+    },
+    [requestRegister.fulfilled.toString()]: (state, action:PayloadAction<any>) => {
+      state.user = action.payload.user;
+      state.token = action.payload.token?.split(' ')[1];
+      state.isAuth = true;
+      state.isError = false;
+    },
+    [requestRegister.rejected.toString()]: (state, action:PayloadAction<any>) => {
       state.isError = true;
       state.message = action.payload?.message;
     },
@@ -81,6 +108,7 @@ const authSlice = createSlice({
 });
 
 export const {
+  logout,
   setError
 } = authSlice.actions;
 export default authSlice.reducer;

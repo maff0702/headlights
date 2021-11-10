@@ -21,11 +21,11 @@ export default class ProductService {
     return axiosAPI.get<any>(`/product/${name}`);
   }
 
-  static async productUpdate (productInfo: any): Promise<AxiosResponse<any>> {
-    return axiosAPI.patch<any>('/product', { ...productInfo });
+  static async productUpdate (formData: any): Promise<AxiosResponse<any>> {
+    return axiosAPI.patch<any>('/product', formData);
   }
 
-  static async productDelete (id: string): Promise<AxiosResponse<ILoginUser>> {
+  static async productDelete (id: number): Promise<AxiosResponse<ILoginUser>> {
     return axiosAPI.delete(`/product/${id}`);
   }
 

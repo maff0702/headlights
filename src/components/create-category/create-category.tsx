@@ -47,14 +47,14 @@ const CreateCategory: FC = () => {
     <div className={styles.form}>
       <h3>Добавить категорию</h3>
       <form onSubmit={onSubmit}>
-        {dataInput.map((item, i) => (<Input key={i} {...item} />))}
+        {dataInput.map((item, i) => (<div className={styles.wrapper_control} key={i}><Input {...item} /></div>))}
         <InputImg
           files={files}
           getRootProps={getRootProps}
           getInputProps={getInputProps}
         ><p>Перетащите сюда или нажмите, чтобы выбрать изображение для категории</p></InputImg>
         <p className={styles.form_info}>{message}</p>
-        <div className={styles.wrapped_button}><Button >Добавить категорию</Button></div>
+        <div className={styles.wrapper_control}><Button >Добавить категорию</Button></div>
       </form>
     </div>
   );

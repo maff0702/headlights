@@ -6,6 +6,9 @@
   display: flex;
   flex-wrap: wrap;
 }
+.info_block{
+  width: 100%;
+}
 .card{
   width: 185px;
   // min-height: 250px;
@@ -23,9 +26,9 @@
     margin-top: 0;
     color: black;
   }
-}
-.card:nth-child(5n+1){
-  margin-left: 0;
+  &:nth-child(5n+1){
+    margin-left: 0;
+  }
 }
 .card_img{
   width: 100%;

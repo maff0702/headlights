@@ -8,9 +8,9 @@ const Input: FC<any> = (props) => {
     <div className={styles.input_container}>
       <input className={styletype === 'small'
           ? styles.input + ' ' + styles.small
-          : styletype === 'medium'
-            ? styles.input + ' ' + styles.medium
-            : styles.input + ' ' + styles.normal
+          : styletype === 'big'
+            ? styles.input + ' ' + styles.big
+            : styles.input + ' ' + styles.medium
       } {...props} />
       {props.info && <p className={styles.input_info}>{props.info}</p>}
     </div>

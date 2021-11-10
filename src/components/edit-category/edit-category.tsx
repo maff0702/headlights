@@ -56,14 +56,16 @@ const EditCategory: FC<IEditCategoryProps> = ({ category, setActive }) => {
   return (
   <div className={styles.edit_category}>
     <form onSubmit={onSubmit}>
-      {dataInput.map((item, i) => (<Input key={i} {...item} />))}
-      <InputImg
-        files={files}
-        getRootProps={getRootProps}
-        getInputProps={getInputProps}
-      ><p>Перетащите сюда или нажмите, для изменения изображения</p></InputImg>
+      {dataInput.map((item, i) => (<div className={styles.wrapper_control} key={i}><Input {...item} /></div>))}
+      <div className={styles.wrapper_control}>
+        <InputImg
+          files={files}
+          getRootProps={getRootProps}
+          getInputProps={getInputProps}
+        ><p>Перетащите сюда или нажмите, для изменения изображения</p></InputImg>
+      </div>
       <p>{message}</p>
-      <div className={styles.button}><Button>Сохранить</Button></div>
+      <div className={styles.wrapper_control}><Button>Сохранить</Button></div>
     </form>
     {!isConfirm && <Button onClick={() => setConfirm(true)}>Удалить категорию</Button>}
     {isConfirm && <div className={styles.confirm}>

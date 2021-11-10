@@ -21,3 +21,15 @@
 .auth_info_form{
   margin: 10px 20px;
 }
+.wrapper_controller{
+  width: 100%;
+  display: flex;
+  margin: 5px 0;
+}
+.link{
+  margin-top: 10px;
+  cursor: pointer;
+  &:hover{
+    color: #efbc63;
+  }
+}

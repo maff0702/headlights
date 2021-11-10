@@ -3,15 +3,21 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  .button{
-    width: 100%;
-    display: flex;
-    justify-content: center;
+  form{
+    flex-basis: 1;
   }
 }
 .confirm{
   width: 100%;
   p{
     display: flex;
+    margin-bottom: 7px;
   }
+}
+.wrapper_control{
+  width: 100%;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

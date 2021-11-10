@@ -1,14 +1,33 @@
 
 .select{
-  width: calc(100% - 20px);
-  margin: 10px;
+  width: 100%;
   border: 1px solid #828282;
   border-radius: 10px;
   padding: 5px 10px;
   font-size: 16px;
   option{
-    width: 100px;
-    min-height: 50px;
+    min-height: 30px;
     word-break: break-all;
+  }
+}
+.small{
+  padding: 1px 3px;
+  font-size: 14px;
+  option{
+    min-height: 30px;
+  }
+}
+.medium{
+  padding: 2px 5px;
+  font-size: 16px;
+  option{
+    min-height: 40px;
+  }
+}
+.big{
+  padding: 5px 10px;
+  font-size: 16px;
+  option{
+    min-height: 50px;
   }
 }

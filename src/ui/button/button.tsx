@@ -8,9 +8,9 @@ const Button: FC<any> = (props) => {
     <button
       className={styletype === 'small'
           ? styles.button + ' ' + styles.small
-          : styletype === 'medium'
-            ? styles.button + ' ' + styles.medium
-            : styles.button + ' ' + styles.normal
+          : styletype === 'big'
+            ? styles.button + ' ' + styles.big
+            : styles.button + ' ' + styles.medium
       }
       {...props}
     />

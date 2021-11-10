@@ -12,10 +12,40 @@
     margin-top: 0;
   }
 }
+.container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.tab_containter{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  min-height: 20px;
+  line-height: 20px;
+  a{
+    color: #000;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 2px 5px;
+  }
+  .tab_active{
+    border-bottom: 2px solid #efbc63;
+  }
+}
 .form_container{
   width: 700px;
   margin: 0 auto;
-  margin-top: 20px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
+}
+.exit{
+  color: #000;
+  font-weight: 400;
+  cursor: pointer;
+  padding: 2px 5px;
+  &:hover{
+    color: #efbc63;
+  }
 }

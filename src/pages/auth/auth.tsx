@@ -5,9 +5,9 @@ import { useHistory } from 'react-router';
 import styles from './auth.module.scss';
 import Input from '../../ui/input/input';
 import Button from '../../ui/button/button';
-import { requestLogin } from '../../store/authSlice';
+import { requestLogin, requestRegister } from '../../store/authSlice';
 
-const Login: FC = () => {
+const Auth: FC = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { message, token } = useSelector((state) => state.auth);
@@ -15,6 +15,7 @@ const Login: FC = () => {
     login: '',
     password: ''
   });
+  const [currentPage, setCurrentPage] = useState(history.location.pathname.slice(1));
   const onChange = (event: ChangeEvent<HTMLInputElement>): void => {
     const { value, name } = event.target;
     setState({
@@ -28,21 +29,29 @@ const Login: FC = () => {
   ];
   const onSubmit = (e: MouseEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    dispatch(requestLogin(state));
+    currentPage === 'login' && dispatch(requestLogin(state));
+    currentPage === 'registration' && dispatch(requestRegister(state));
   };
 
   if (token) history.replace('/');
 
   return (
     <div className={styles.auth}>
-      <h1>Авторизация</h1>
+      <h1>
+        {currentPage === 'login' && <>Авторизация</>}
+        {currentPage === 'registration' && <>Регистрация</>}
+      </h1>
       <form onSubmit={onSubmit}>
-        {dataInput.map((item) => (<Input key={item.name} {...item} />))}
-        <p className={styles.auth_info_form}>{message}</p>
-        <Button>Войти</Button>
+        {dataInput.map((item) => (<div className={styles.wrapper_controller} key={item.name}><Input {...item} /></div>))}
+        {message && <p className={styles.auth_info_form}>{message}</p>}
+        <div className={styles.wrapper_controller}><Button>Войти</Button></div>
+        {currentPage === 'login'
+          ? <a onClick={() => setCurrentPage('registration')} className={styles.link}>Регистрация</a>
+          : <a onClick={() => setCurrentPage('login')} className={styles.link}>Авторизация</a>
+        }
       </form>
     </div>
   );
 };
 
-export default Login;
+export default Auth;

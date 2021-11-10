@@ -72,6 +72,28 @@ export const createProduct = createAsyncThunk(
     }
   }
 );
+export const editProduct = createAsyncThunk(
+  'products/editProduct',
+  async (formData:any, { rejectWithValue }) => {
+    try {
+      const response = await apiProduct.productUpdate(formData);
+      return response.data;
+    } catch (e:any) {
+      return rejectWithValue(e.response.data);
+    }
+  }
+);
+export const deleteProduct = createAsyncThunk(
+  'products/deleteProduct',
+  async ({ id }:{ id:number }, { rejectWithValue }) => {
+    try {
+      const response = await apiProduct.productDelete(id);
+      return response.data;
+    } catch (e:any) {
+      return rejectWithValue(e.response.data);
+    }
+  }
+);
 export const createImg = createAsyncThunk(
   'products/createImg',
   async (formData:any, { rejectWithValue }) => {
@@ -246,6 +268,27 @@ const productsSlice = createSlice({
       state.isError = false;
     },
     [createProduct.rejected.toString()]: (state, action: PayloadAction<any>) => {
+      state.message = action.payload?.message;
+      state.isError = true;
+      state.isLoading = false;
+    },
+    [editProduct.fulfilled.toString()]: (state, action: PayloadAction<any>) => {
+      state.currentProduct = action.payload.product;
+      state.message = 'Успешно изменен!';
+      state.isLoading = false;
+      state.isError = false;
+    },
+    [editProduct.rejected.toString()]: (state, action: PayloadAction<any>) => {
+      state.message = action.payload?.message;
+      state.isError = true;
+      state.isLoading = false;
+    },
+    [deleteProduct.fulfilled.toString()]: (state) => {
+      state.message = 'Товар удален!';
+      state.isLoading = false;
+      state.isError = false;
+    },
+    [deleteProduct.rejected.toString()]: (state, action: PayloadAction<any>) => {
       state.message = action.payload?.message;
       state.isError = true;
       state.isLoading = false;
