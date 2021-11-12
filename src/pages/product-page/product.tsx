@@ -3,6 +3,7 @@ import { useParams, useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import { useSelector, useDispatch } from '../../hooks/hooks';
+import { Helmet } from 'react-helmet';
 
 import styles from './product.module.scss';
 import { IProduct } from '../../types/main';
@@ -166,20 +167,25 @@ const Product: FC = () => {
 
   const arrImg = [currentProduct?.mainImg];
   currentProduct?.img.forEach((item) => arrImg.push(item?.name));
+  const screenWidth = screen.width;
   const settings = {
     dots: false,
     infinite: true,
     slidesToShow: arrImg.length === 2 ? 2 : 3,
     slidesToScroll: 1,
-    vertical: true,
+    vertical: screenWidth > 420 && true,
     swipeToSlide: true,
     centerPadding: '100px',
-    verticalSwiping: true,
+    verticalSwiping: screenWidth > 420 && true,
     arrows: false
   };
 
   return (
     <section className={styles.content}>
+      <Helmet>
+        <title>{currentProduct?.name}</title>
+        <meta name="description" content={`${currentProduct?.name} - LED фары оптом`} />
+      </Helmet>
       {isLoading && <Spinner />}
       {isError && <p>Ошибка, попробуйте обновить страницу...</p>}
       {currentProduct
@@ -189,7 +195,7 @@ const Product: FC = () => {
         </h1>
       <div className={styles.main}>
         <div className={styles.left_container}>
-          <div className={styles.other_images}>
+          <div className={arrImg.length > 1 ? styles.other_images : styles.hidden}>
             <Slider {...settings}>
               {arrImg?.length > 1 && arrImg?.map((item) => (<div key={item} onClick={() => handleClickImg(item)} className={styles.other_image}>
                 <img src={`${API_URL_IMG}/${item}`} />
@@ -300,12 +306,12 @@ const Product: FC = () => {
             <div><Button onClick={addInfo}>Сохранить</Button></div></>}
           </div>
           {user?.role === 'ADMIN' && <div className={styles.product_control}>
-            {!isConfirm && <Button onClick={() => setConfirm(true)}>Удалить товар</Button>}
+            {!isConfirm && <div><Button onClick={() => setConfirm(true)}>Удалить товар</Button></div>}
             {isConfirm &&
               <div><Button onClick={() => setConfirm(false)}>Отмена</Button>
               <Button onClick={handleDeleteProduct}>Подтвердить</Button></div>}
             <div>{!isEditMainInfo
-            ? <Button onClick={clickEditProduct}>Редактировать товар</Button>
+            ? <div><Button onClick={clickEditProduct}>Редактировать товар</Button></div>
             : <><Button onClick={() => setEditMainInfo(false)}>Отменить</Button>
               <Button onClick={handleEditProduct}>Сохранить</Button></>}</div>
           </div>}

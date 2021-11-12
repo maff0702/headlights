@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { Helmet } from 'react-helmet';
 
 import styles from './main.module.scss';
 import SerchBar from '../../ui/serch-bar/search-bar';
@@ -13,6 +14,10 @@ import rzdImg from '../../images/rzd1.svg';
 const Main: FC = () => {
   return (
     <section className={styles.content}>
+      <Helmet>
+        <title>Торговый Дом - LED фары</title>
+        <meta name="description" content="LED фары оптом" />
+      </Helmet>
       <SerchBar />
       <div className={styles.content_catalog}>
         <h2 className={styles.content_name}>Каталог товаров</h2>

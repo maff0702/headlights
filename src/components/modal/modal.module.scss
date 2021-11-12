@@ -7,6 +7,10 @@
   transition: 0.5s all;
   transform: scale(0.7);
   display: none;
+  @media (max-width:767px) {
+    padding: 10px;
+    width: 100%;
+  }
 }
 .modal__body_active{
   transform: scale(1);
@@ -16,13 +20,18 @@
 }
 
 .header{
-  width: 680px;
+  width: calc(100% - 32px);
   padding-right: 40px;
   height: 64px;
   line-height: 64px;
   text-align: start;
   font-size: 18px;
   font-weight: 500;
+  @media (max-width:400px) {
+    height: 30px;
+    line-height: 20px;
+    font-size: 16px;
+  }
 }
 
 .modal__close {
@@ -32,6 +41,10 @@
   width: 32px;
   height: 32px;
   cursor: pointer;
+  @media (max-width:400px) {
+    right: 15px;
+    top: 15px;
+  }
   }
   .modal__close:before, .modal__close:after {
   position: absolute;

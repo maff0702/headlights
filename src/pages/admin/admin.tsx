@@ -1,6 +1,7 @@
 import React, { FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
+import { Helmet } from 'react-helmet';
 
 import styles from './admin.module.scss';
 import CreateProduct from '../../components/create-product/create-product';
@@ -20,6 +21,9 @@ const Admin: FC = () => {
 
   return (
     <div className={styles.admin}>
+      <Helmet>
+        <title>Панель администратора</title>
+      </Helmet>
       {/* <h1>Панель администратора</h1> */}
       <div className={styles.tab_containter}>
         <a onClick={() => setCurrentTab('addProduct')} className={currentTab === 'addProduct' ? styles.tab_active : styles.tab}>

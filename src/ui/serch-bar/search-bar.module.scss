@@ -4,6 +4,11 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  @media (max-width: 767px) {
+    form{
+      width: 100%;
+    }
+  }
 }
 .search{
   width: 700px;;
@@ -33,6 +38,19 @@
       cursor: pointer;
     }
   }
+  @media (max-width: 767px) {
+    width: calc(100% - 60px);
+    margin: 0 30px;
+    input{
+      width: calc(100% - 30px);
+      height: 30px;
+    }
+    span{
+      width: 30px;
+      height: 30px;
+      padding: 2px;
+    }
+  }
 }
 .search_result{
   position: absolute;
@@ -45,6 +63,10 @@
   a{
     text-decoration: none;
     color: black;
+  }
+  @media (max-width: 767px) {
+    width: calc(100% - 96px);
+    margin-left: 42px;
   }
 }
 .search_card{
@@ -59,6 +81,14 @@
   }
   p{
     margin-left: 5px;
+  }
+  @media (max-width: 767px) {
+    width: 100%;
+    padding: 0.5px 3px;
+    img{
+      width: 40px;
+      height: 40px;
+    }
   }
 }
 .search_card:hover{

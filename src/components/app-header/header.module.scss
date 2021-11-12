@@ -4,11 +4,20 @@
   width: 100%;
   height: 80px;
   background-color: #262D33;
+  @media (max-width: 767px) {
+    height: 50px;
+  }
+  @media (min-width: 768px) and (max-width: 999px) {
+    height: 60px;
+  }
 }
 .container{
   width: 1000px;
   height: 100%;
   margin: 0 auto;
+  @media (max-width: 999px) {
+    width: 100%;
+  }
 }
 .content{
   width: 100%;
@@ -17,7 +26,12 @@
   justify-content: space-between;
   align-items: center;
   @media (max-width: 767px) {
-    padding: 60px 0 0 0;
+    width: 100%;
+    flex-direction: row-reverse;
+    padding: 0 10px;
+  }
+  @media (min-width: 768px) and (max-width: 999px) {
+    padding: 0 10px;
   }
 }
 .logo{
@@ -27,6 +41,18 @@
   align-items: center;
   img{
     width: 200px;
+  }
+  @media (max-width: 767px) {
+    width: 100px;
+    img{
+      width: 100px;
+    }
+  }
+  @media (min-width: 768px) and (max-width: 999px) {
+    width: 120px;
+    img{
+      width: 120px;
+    }
   }
 }
 .menu{
@@ -41,6 +67,85 @@
       .activeLink{
         color: #efbc63;
       }
+    }
+  }
+  @media (max-width:767px) {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #262D33;
+    padding: 50px 0 0 0;
+    transition: all 0.3s ease 0s;
+    overflow: auto;
+    z-index: 40;
+    &.active{
+      top: 0;
+      transition: all 0.3s ease 0s;
+    }
+    ul{
+      display: flex;
+      flex-direction: column;
+      li{
+        font-size: 22px;
+        margin-top: 6px;
+      }
+    }
+  }
+  @media (min-width: 768px) and (max-width: 999px) {
+    ul{
+      font-size: 18px;
+      li{
+        margin-left: 8px;
+      }
+    }
+  }
+}
+.header__burger{
+  display: none;
+  @media (max-width:767px) {
+    display: block;
+    position: relative;
+    width: 30px;
+    height: 20px;
+    z-index: 50;
+    span{
+      background: white;
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      left: 0;
+      top: 9px;
+      transition: all 0.3s ease 0s;
+    }
+    &:before,&:after{
+      content: '';
+      background: white;
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      left: 0;
+      transition: all 0.3s ease 0s;
+    }
+    &:before{
+      top: 0;
+    }
+    &:after{
+      bottom:0;
+    }
+    &.active:before{
+      transform: rotate(45deg);
+      top: 9px;
+      background-color: #f2f2f2;
+    }
+    &.active:after{
+      transform: rotate(-45deg);
+      bottom: 9px;
+      background-color: #f2f2f2;
+    }
+    &.active span{
+      transform: scale(0);
     }
   }
 }
