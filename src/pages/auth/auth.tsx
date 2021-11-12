@@ -1,6 +1,7 @@
 import React, { FC, useState, MouseEvent, ChangeEvent } from 'react';
 import { useSelector, useDispatch } from '../../hooks/hooks';
 import { useHistory } from 'react-router';
+import { Helmet } from 'react-helmet';
 
 import styles from './auth.module.scss';
 import Input from '../../ui/input/input';
@@ -32,11 +33,18 @@ const Auth: FC = () => {
     currentPage === 'login' && dispatch(requestLogin(state));
     currentPage === 'registration' && dispatch(requestRegister(state));
   };
+  const handleClickLink = (link) => {
+    setCurrentPage(link);
+    history.replace(`/${link}`);
+  };
 
   if (token) history.replace('/');
 
   return (
     <div className={styles.auth}>
+      <Helmet>
+        <title>Вход</title>
+      </Helmet>
       <h1>
         {currentPage === 'login' && <>Авторизация</>}
         {currentPage === 'registration' && <>Регистрация</>}
@@ -46,8 +54,8 @@ const Auth: FC = () => {
         {message && <p className={styles.auth_info_form}>{message}</p>}
         <div className={styles.wrapper_controller}><Button>Войти</Button></div>
         {currentPage === 'login'
-          ? <a onClick={() => setCurrentPage('registration')} className={styles.link}>Регистрация</a>
-          : <a onClick={() => setCurrentPage('login')} className={styles.link}>Авторизация</a>
+          ? <a onClick={() => handleClickLink('registration')} className={styles.link}>Регистрация</a>
+          : <a onClick={() => handleClickLink('login')} className={styles.link}>Авторизация</a>
         }
       </form>
     </div>

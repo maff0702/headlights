@@ -8,6 +8,7 @@ import SerchBar from '../../ui/serch-bar/search-bar';
 import { getProductsAll, setError, setPage } from '../../store/productsSlice';
 import Spinner from '../../ui/spinner/spinner';
 import Pagination from '../../ui/pagination/pagination';
+import { Helmet } from 'react-helmet';
 
 const SearchPage: FC = () => {
   const dispatch = useDispatch();
@@ -32,6 +33,10 @@ const SearchPage: FC = () => {
 
   return (
     <div className={styles.content}>
+      <Helmet>
+        <title>{name}</title>
+        <meta name="description" content={`Поиск по запросу ${name} - найдено ${totalCount} товаров. LED фары оптом`} />
+      </Helmet>
       <SerchBar />
       {name && <h1>Поиск по запросу: {name}</h1>}
       <p>всего найдено товаров: {totalCount}</p>

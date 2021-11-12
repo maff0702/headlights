@@ -29,6 +29,24 @@
   &:nth-child(5n+1){
     margin-left: 0;
   }
+  @media (max-width: 999px) {
+    margin: 5px;
+    &:nth-child(5n+1){
+      margin-left: 5px;
+    }
+  }
+  @media (max-width: 400px) {
+    width: calc(50% - 10px);
+  }
+  @media (min-width: 401px) and (max-width: 600px) {
+    width: calc(33% - 10px);
+  }
+  @media (min-width: 601px) and (max-width: 800px) {
+    width: calc(25% - 10px);
+  }
+  @media (min-width: 801px) and (max-width: 999px) {
+    width: calc(20% - 10px);
+  }
 }
 .card_img{
   width: 100%;
@@ -43,4 +61,9 @@
   font-weight: 400;
   line-height: 24px;
   word-wrap: break-word;
+  @media (max-width: 767px) {
+    padding: 2px;
+    font-size: 16px;
+    line-height: 18px;
+  }
 }

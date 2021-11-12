@@ -5,11 +5,20 @@
   height: 80px;
   background-color: #262D33;
   flex: 0 0 auto;
+  @media (max-width: 767px) {
+    height: 40px;
+  }
+  @media (max-width: 999px) {
+    height: 60px;
+  }
 }
 .container{
   width: 1000px;
   height: 100%;
   margin: 0 auto;
+  @media (max-width: 999px) {
+    width: 100%;
+  }
 }
 .content{
   width: 100%;
@@ -22,6 +31,6 @@
   font-size: 16px;
   line-height: 22px;
   @media (max-width:767px) {
-    padding: 60px 0 0 0;
+    font-size: 12px;
   }
 }
