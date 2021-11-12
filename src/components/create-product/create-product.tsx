@@ -30,7 +30,7 @@ const CreateProduct: FC = () => {
   const { categories, message } = useSelector((state) => state.products);
   const [stateProduct, setStateProduct] = useState({
     name: '',
-    price: '' as any,
+    price: '',
     vcode: '',
     group: '',
     description: ''
