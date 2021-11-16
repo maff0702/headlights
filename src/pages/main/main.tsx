@@ -4,10 +4,10 @@ import { Helmet } from 'react-helmet';
 import styles from './main.module.scss';
 import SerchBar from '../../ui/serch-bar/search-bar';
 import CatalogCards from '../../components/catalog-cards/catalog-cards';
-import likeImg from '../../images/like.svg';
-import dollarImg from '../../images/dollar.svg';
-import readyImg from '../../images/ready.svg';
-import operatorImg from '../../images/operator.svg';
+import garantImg from '../../images/garant.gif';
+import moneyImg from '../../images/money.gif';
+import sercImg from '../../images/serc.gif';
+import feedbackImg from '../../images/feedback.gif';
 import rosavtodorImg from '../../images/rosavtodor1.svg';
 import rzdImg from '../../images/rzd1.svg';
 
@@ -35,19 +35,19 @@ const Main: FC = () => {
         <h3>НАШИ ГАРАНТИИ</h3>
         <div className={styles.guarantees_item}>
           <span>
-            <img src={likeImg} />
+            <img src={garantImg} width='100%' alt='garantImg' />
             <p>Гарантия на всю продукцию</p>
           </span>
           <span>
-            <img src={dollarImg} />
+            <img src={moneyImg} width='100%' alt='moneyImg' />
             <p>Гарантия возврата денег</p>
           </span>
           <span>
-            <img src={readyImg} />
+            <img src={sercImg} width='100%' alt='sercImg' />
             <p>Товар сертифицирован</p>
           </span>
           <span>
-            <img src={operatorImg} />
+            <img src={feedbackImg} width='100%' alt='feedbackImg' />
             <p>Консультация по вопросам</p>
           </span>
         </div>
