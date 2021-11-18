@@ -9,7 +9,7 @@ import Catalog from '../../pages/catalog/catalog';
 import Products from '../../pages/products/products';
 import Product from '../../pages/product-page/product';
 import SearchPage from '../../pages/search-page/search-page';
-import Contacts from '../../pages/contacts/contacts';
+import Info from '../../pages/info/info';
 import Auth from '../../pages/auth/auth';
 import Admin from '../../pages/admin/admin';
 import Footer from '../app-footer/footer';
@@ -38,7 +38,7 @@ const App: FC = () => {
             <Route exact path="/catalog/:name" component={Products} />
             <Route exact path="/catalog/:name/:name" component={Product} />
             <Route exact path="/search/:name" component={SearchPage} />
-            <Route exact path="/contacts" component={Contacts} />
+            <Route exact path="/info" component={Info} />
             <Route exact path="/login" component={Auth} />
             <Route exact path="/registration" component={Auth} />
             {user?.role === 'ADMIN' && <Route exact path="/admin" component={Admin} />}

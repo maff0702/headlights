@@ -55,8 +55,8 @@ const Main: FC = () => {
       <div className={styles.partners}>
         <h3>НАШИ ПАРТНЕРЫ</h3>
         <div className={styles.partners_img}>
-          <img src={rosavtodorImg} alt="Росавтодор" />
-          <img src={rzdImg} alt="РЖД" />
+          <img src={rosavtodorImg} alt="Росавтодор" width='100%' />
+          <img src={rzdImg} alt="РЖД" width='100%' />
         </div>
       </div>
     </section>

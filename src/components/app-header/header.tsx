@@ -20,7 +20,7 @@ const Header: FC = () => {
         <div className={styles.content}>
           <div className={styles.logo}>
             <NavLink to="/">
-              <img src={logo} alt="" />
+              <img src={logo} alt="logo" width='100%' />
             </NavLink>
           </div>
           <div onClick={handleClickBurger}
@@ -31,8 +31,7 @@ const Header: FC = () => {
             <ul>
               <li><NavLink onClick={() => setBurger(false)} exact to="/" activeClassName={styles.activeLink}>Главная</NavLink></li>
               <li><NavLink onClick={() => setBurger(false)} to="/catalog" activeClassName={styles.activeLink}>Каталог</NavLink></li>
-              <li><NavLink onClick={() => setBurger(false)} to="/help" activeClassName={styles.activeLink}>Помощь</NavLink></li>
-              <li><NavLink onClick={() => setBurger(false)} to="/contacts" activeClassName={styles.activeLink}>Контакты</NavLink></li>
+              <li><NavLink onClick={() => setBurger(false)} to="/info" activeClassName={styles.activeLink}>О нас</NavLink></li>
               {user?.role === 'ADMIN' && <li>
                 <NavLink onClick={() => setBurger(false)} to="/admin" activeClassName={styles.activeLink}>Админ панель</NavLink></li>}
             </ul>
