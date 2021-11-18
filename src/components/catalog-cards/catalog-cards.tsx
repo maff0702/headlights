@@ -60,7 +60,7 @@ const CatalogCards: FC = () => {
                 }}>Редактировать</Button>}
           </div>
         ))
-        : !isError && <p>Не удалось найти категории</p>}
+        : !isError && !isLoading && categoriesSort?.length === 0 && <p>В данный момент каталог пустой.</p>}
         <Modal
           active={isModal}
           setActive={semModal}
