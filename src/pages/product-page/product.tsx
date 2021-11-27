@@ -29,7 +29,7 @@ const Product: FC = () => {
   const { name }: { name: string } = useParams();
   const { products, currentProduct, categories, isLoading, isError, message, messageInfo } = useSelector((state) => state.products);
   const { user } = useSelector((state) => state.auth);
-  const similarProduct = products?.filter(elem => elem.name !== currentProduct?.name && elem.group === currentProduct?.group);
+  const similarProduct = currentProduct?.group ? products?.filter(elem => elem.name !== currentProduct?.name && elem.group === currentProduct?.group) : null;
   const [currentImg, setCurrentImg] = useState<string | undefined>(currentProduct?.mainImg);
   const [currentInfo, setCurrentInfo] = useState<number | null>(null);
   const [currentTab, setCurrentTab] = useState('description');
